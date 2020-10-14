@@ -34,3 +34,6 @@ gradle-app.setting
 
 # virtual machine crash logs
 hs_err_pid*
+
+# NPM Modules
+node_modules/

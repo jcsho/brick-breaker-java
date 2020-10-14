@@ -1,0 +1,67 @@
+{
+  "name": "brick-breaker",
+  "version": "1.0.0",
+  "description": "Brick Breaker Clone built with Java and Processing Graphics Library",
+  "private": true,
+  "scripts": {
+    "commit": "cz"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/justinhodev/brick-breaker.git"
+  },
+  "keywords": [
+    "java",
+    "game",
+    "2d",
+    "brick-breaker"
+  ],
+  "author": "Justin Ho <justinho@jcsh.dev>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/justinhodev/brick-breaker/issues"
+  },
+  "homepage": "https://github.com/justinhodev/brick-breaker#readme",
+  "devDependencies": {
+    "commitizen": "^4.2.1",
+    "cz-conventional-changelog": "^3.3.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "release": {
+    "branches": ["master"],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      [
+        "@semantic-release/changelog",
+        {
+          "changelogFile": "CHANGELOG.md",
+          "changelogTitle": "# Brick Breaker Changelog"
+        }
+      ],
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "CHANGELOG.md"
+          ]
+        }
+      ],
+      [
+        "@semantic-release/github",
+        {
+          "assets": [
+            "CHANGELOG.md",
+            {
+              "path": "build/launch4j/**"
+            }
+          ]
+        }
+      ]
+    ]
+  }
+}
