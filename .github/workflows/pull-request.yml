@@ -21,7 +21,9 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
           restore-keys: ${{ runner.os }}-gradle
       - name: Check and Test
-        run: $GITHUB_WORKSPACE/gradlew check test
+        uses: eskatos/gradle-command-action@v1.3.3
+        with:
+          arguments: check test
       - name: Submit Coverage Report
         uses: codacy/codacy-coverage-reporter-action@master
         with:
