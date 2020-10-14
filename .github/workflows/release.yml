@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: '12'
       - name: Install NPM Modules
-        run: npm i -g @semantic-release/git @semantic-release/changelog
+        run: npm i -g semantic-release@17 @semantic-release/git @semantic-release/changelog
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
