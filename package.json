@@ -57,7 +57,7 @@
           "assets": [
             "CHANGELOG.md",
             {
-              "path": "build/launch4j/**"
+              "path": "build/launch4j/*.exe"
             }
           ]
         }
