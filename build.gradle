@@ -13,9 +13,12 @@ plugins {
     // Apply the application plugin to add support for building a CLI application.
     id 'application'
 
+    // Code static analysis linter
     id 'checkstyle'
 
+    // Build tools for distribution
     id 'com.github.johnrengelman.shadow' version '6.1.0'
+    id 'edu.sc.seis.launch4j' version '2.4.8'
 }
 
 repositories {
@@ -40,4 +43,11 @@ application {
 checkstyle {
   toolVersion '8.36'
   showViolations = true
+}
+
+launch4j {
+  outfile = 'BrickBreaker.exe'
+  mainClassName = project.mainClassName
+  copyConfigurable = project.tasks.shadowJar.outputs.files
+  jar = "lib/${project.tasks.shadowJar.archiveName}"
 }
