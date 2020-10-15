@@ -1,5 +1,12 @@
 # Brick Breaker Changelog
 
+# [1.2.0](https://github.com/justinhodev/brick-breaker/compare/v1.1.0...v1.2.0) (2020-10-15)
+
+
+### Features
+
+* add ball object ([#2](https://github.com/justinhodev/brick-breaker/issues/2)) ([b70a57e](https://github.com/justinhodev/brick-breaker/commit/b70a57ec787295fbad41eb6323e470c61608ce32))
+
 # [1.1.0](https://github.com/justinhodev/brick-breaker/compare/v1.0.0...v1.1.0) (2020-10-15)
 
 
