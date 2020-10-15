@@ -5,6 +5,7 @@ import processing.core.PVector;
 
 public class Ball {
   private PVector position;
+  private PVector speed;
   private int radius;
 
   /**
@@ -15,6 +16,7 @@ public class Ball {
   public Ball(int size) {
     this.radius = size;
     this.position = new PVector();
+    this.speed = new PVector();
   }
 
   /**
@@ -25,6 +27,17 @@ public class Ball {
    */
   public Ball setLocation(PVector newPosition) {
     this.position = newPosition;
+    return this;
+  }
+
+  /**
+   * Setter for speed of {@link Ball}.
+   *
+   * @param newSpeed {@link PVector} for speed in x and y axis
+   * @return this instance of {@link Ball}
+   */
+  public Ball setSpeed(PVector newSpeed) {
+    this.speed = newSpeed;
     return this;
   }
 
@@ -47,8 +60,17 @@ public class Ball {
   }
 
   /**
+   * Getter for speed of {@link Ball}.
+   *
+   * @return {@link PVector} 2d
+   */
+  public PVector getSpeed() {
+    return this.speed;
+  }
+
+  /**
    * Draws {@link Ball} to screen.
-   * 
+   *
    * @param sketch main {@link PApplet} instance
    * @see a {@link Ball} object on screen
    */
