@@ -12,8 +12,8 @@ import processing.core.PApplet;
  */
 public class App extends PApplet {
 
-  static final int WIDTH = 1200;
-  static final int HEIGHT = 1000;
+  private static final int WIDTH = 1200;
+  private static final int HEIGHT = 1000;
 
   /**
    * Pre-run configuration for {@link PApplet}.
@@ -29,7 +29,6 @@ public class App extends PApplet {
    * All code is run at 60 fps by default.
    */
   public void draw() {
-
   }
   
   /**
