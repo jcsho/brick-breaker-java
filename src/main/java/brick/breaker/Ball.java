@@ -1,6 +1,9 @@
 package brick.breaker;
 
+import processing.core.PVector;
+
 public class Ball {
+  private PVector position;
   private int radius;
 
   /**
@@ -10,6 +13,12 @@ public class Ball {
    */
   public Ball(int size) {
     this.radius = size;
+    this.position = new PVector();
+  }
+
+  public Ball setLocation(PVector newPosition) {
+    this.position = newPosition;
+    return this;
   }
 
   /**
@@ -19,5 +28,9 @@ public class Ball {
    */
   public int getSize() {
     return this.radius;
+  }
+
+  public PVector getLocation() {
+    return this.position;
   }
 }
