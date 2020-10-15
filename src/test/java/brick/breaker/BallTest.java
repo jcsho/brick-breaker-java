@@ -9,8 +9,8 @@ public class BallTest {
 
   @Test
   public void testBallSetSize() {
-    int size = 5;
-    Ball ball = new Ball(size);
+    PVector size = new PVector(50, 50);
+    Shape ball = new Ball().setSize(size);
     assertEquals(size, ball.getSize());
   }
 
@@ -19,9 +19,8 @@ public class BallTest {
     float x = 50;
     float y = 50;
     PVector location = new PVector(x, y);
-    Ball ball = new Ball(50);
-    ball.setLocation(location);
-    assertEquals(location, ball.getLocation());
+    Shape ball = new Ball().setSize(new PVector(50, 50)).setPosition(location);
+    assertEquals(location, ball.getPosition());
   }
 
   @Test
@@ -29,7 +28,7 @@ public class BallTest {
     float speedX = 1;
     float speedY = 1;
     PVector speed = new PVector(speedX, speedY);
-    Ball ball = new Ball(50);
+    Shape ball = new Ball().setSize(new PVector(50, 50)).setPosition(new PVector(20, 20));
     ball.setSpeed(speed);
     assertEquals(speed, ball.getSpeed());
   }
