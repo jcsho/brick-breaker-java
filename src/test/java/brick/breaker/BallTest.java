@@ -24,5 +24,15 @@ public class BallTest {
     assertEquals(location, ball.getLocation());
   }
 
+  @Test
+  public void testBallSpeed() {
+    float speedX = 1;
+    float speedY = 1;
+    PVector speed = new PVector(speedX, speedY);
+    Ball ball = new Ball(50);
+    ball.setSpeed(speed);
+    assertEquals(speed, ball.getSpeed());
+  }
+
 }
 
