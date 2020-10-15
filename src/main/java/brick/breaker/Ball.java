@@ -1,5 +1,6 @@
 package brick.breaker;
 
+import processing.core.PApplet;
 import processing.core.PVector;
 
 public class Ball {
@@ -43,5 +44,15 @@ public class Ball {
    */
   public PVector getLocation() {
     return this.position;
+  }
+
+  /**
+   * Draws {@link Ball} to screen.
+   * 
+   * @param sketch main {@link PApplet} instance
+   * @see a {@link Ball} object on screen
+   */
+  public void render(PApplet sketch) {
+    sketch.ellipse(position.x, position.y, radius, radius);
   }
 }
