@@ -4,12 +4,18 @@
 
 package brick.breaker;
 
-public class App {
-  public String getGreeting() {
-    return "Hello world.";
-  }
+import processing.core.PApplet;
 
+public class App extends PApplet {
+  
+  /**
+   *  Starts program with an instance of {@link PApplet}.
+   *
+   *  @param args command line arguments
+   */
   public static void main(String[] args) {
-    System.out.println(new App().getGreeting());
+    String[] processingArgs = { "App" };
+    App app = new App();
+    PApplet.runSketch(processingArgs, app);
   }
 }
