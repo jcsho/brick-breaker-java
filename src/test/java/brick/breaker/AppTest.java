@@ -10,10 +10,10 @@ import org.junit.Test;
 import processing.core.PApplet;
 
 public class AppTest {
-  App app = new App();
 
   @Test
   public void testAppIsPApplet() {
+    App app = new App();
     assertTrue(app instanceof PApplet);
   }
 }
