@@ -16,6 +16,12 @@ public class Ball {
     this.position = new PVector();
   }
 
+  /**
+   * Setter for coordinates of {@link Ball}.
+   *
+   * @param newPosition {@link PVector} for x and y cartesian coordinates
+   * @return this instance of {@link Ball}
+   */
   public Ball setLocation(PVector newPosition) {
     this.position = newPosition;
     return this;
@@ -30,6 +36,11 @@ public class Ball {
     return this.radius;
   }
 
+  /**
+   * Getter for position of {@link Ball}.
+   *
+   * @return {@link PVector} 2d version
+   */
   public PVector getLocation() {
     return this.position;
   }
