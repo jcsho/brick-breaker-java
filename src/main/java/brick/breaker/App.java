@@ -4,12 +4,42 @@
 
 package brick.breaker;
 
-public class App {
-  public String getGreeting() {
-    return "Hello world.";
+import processing.core.PApplet;
+
+/**
+ * Brick Breaker Clone.
+ * Implemented with Processing library for Graphics.
+ */
+public class App extends PApplet {
+
+  private static final int WIDTH = 1200;
+  private static final int HEIGHT = 1000;
+
+  /**
+   * Pre-run configuration for {@link PApplet}.
+   * All code is only run once per instance of app.
+   * Used to set window size / instantiate objects.
+   */
+  public void settings() {
+    size(WIDTH, HEIGHT);
   }
 
+  /**
+   * Runtime code for {@link PApplet}.
+   * All code is run at 60 fps by default.
+   */
+  public void draw() {
+    // TODO implement draw
+  }
+  
+  /**
+   *  Starts program with an instance of {@link PApplet}.
+   *
+   *  @param args command line arguments
+   */
   public static void main(String[] args) {
-    System.out.println(new App().getGreeting());
+    String[] processingArgs = { "App" };
+    App app = new App();
+    PApplet.runSketch(processingArgs, app);
   }
 }

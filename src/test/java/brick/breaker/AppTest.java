@@ -4,14 +4,16 @@
 
 package brick.breaker;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
+import processing.core.PApplet;
 
 public class AppTest {
+
   @Test
-  public void testAppHasAGreeting() {
-    App classUnderTest = new App();
-    assertNotNull("app should have a greeting", classUnderTest.getGreeting());
+  public void testAppIsPApplet() {
+    App app = new App();
+    assertTrue(app instanceof PApplet);
   }
 }
