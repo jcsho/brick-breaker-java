@@ -5,7 +5,7 @@ updates:
     schedule:
       interval: "daily"
     commit-message:
-      prefix: "build(gradle):"
+      prefix: "build"
       include: "scope"
      
   - package-ecosystem: "npm"
@@ -13,5 +13,5 @@ updates:
     schedule:
       interval: "daily"
     commit-message:
-      prefix: "build(npm):"
+      prefix: "build"
       include: "scope"
