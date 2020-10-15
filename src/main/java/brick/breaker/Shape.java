@@ -4,7 +4,7 @@ import processing.core.PApplet;
 import processing.core.PVector;
 
 /**
- * The base class for all shapes in the game
+ * The base class for all shapes in the game.
  */
 public abstract class Shape {
 
