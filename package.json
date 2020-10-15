@@ -4,7 +4,7 @@
   "description": "Brick Breaker Clone built with Java and Processing Graphics Library",
   "private": true,
   "scripts": {
-    "commit": "cz"
+    "cz": "cz"
   },
   "repository": {
     "type": "git",
@@ -24,15 +24,23 @@
   "homepage": "https://github.com/justinhodev/brick-breaker#readme",
   "devDependencies": {
     "commitizen": "^4.2.1",
-    "cz-conventional-changelog": "^3.3.0"
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^4.3.0"
   },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "./gradlew check"
+    }
+  },
   "release": {
-    "branches": ["master"],
+    "branches": [
+      "master"
+    ],
     "plugins": [
       "@semantic-release/commit-analyzer",
       "@semantic-release/release-notes-generator",
