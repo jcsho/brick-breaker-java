@@ -6,8 +6,9 @@ import processing.core.PVector;
 /**
  * The base class for all shapes in the game.
  */
-public abstract class Shape {
+public abstract class Shape<T extends Shape<T>> {
 
+  protected T subclass;
   protected PVector position;
   protected PVector size;
   protected PVector speed;
@@ -15,7 +16,7 @@ public abstract class Shape {
   /**
    * Getter for position of {@link Shape}.
    *
-   * @return {@link PVector} 2D 
+   * @return {@link PVector} 2D
    */
   public PVector getPosition() {
     return this.position;
@@ -45,9 +46,9 @@ public abstract class Shape {
    * @param newPosition {@link PVector} for x and y cartesian coordinates
    * @return this instance of {@link Shape}
    */
-  public Shape setPosition(PVector newPosition) {
-    this.position = newPosition;
-    return this;
+  public T setPosition(PVector newPosition) {
+    subclass.position = newPosition;
+    return subclass;
   }
 
   /**
@@ -56,9 +57,9 @@ public abstract class Shape {
    * @param newSize {@link PVector} for shape
    * @return this instance of {@link Shape}
    */
-  public Shape setSize(PVector newSize) {
-    this.size = newSize;
-    return this;
+  public T setSize(PVector newSize) {
+    subclass.size = newSize;
+    return subclass;
   }
 
   /**
@@ -67,9 +68,9 @@ public abstract class Shape {
    * @param newSpeed {@link PVector} for speed in x and y axis
    * @return this instance of {@link Shape}
    */
-  public Shape setSpeed(PVector newSpeed) {
-    this.speed = newSpeed;
-    return this;
+  public T setSpeed(PVector newSpeed) {
+    subclass.speed = newSpeed;
+    return subclass;
   }
 
   public abstract void render(PApplet sketch);

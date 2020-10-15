@@ -3,7 +3,7 @@ package brick.breaker;
 import processing.core.PApplet;
 import processing.core.PVector;
 
-public class Paddle extends Shape {
+public class Paddle extends Shape<Paddle> {
 
   private float smoothAmount;
 
@@ -11,6 +11,7 @@ public class Paddle extends Shape {
    * Default constructor for {@link Paddle}.
    */
   public Paddle() {
+    subclass = this;
   }
 
   /**
