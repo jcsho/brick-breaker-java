@@ -21,8 +21,9 @@ public class Paddle extends Shape<Paddle> implements IMovement {
 
   @Override
   public void setMaxSpeed(float limit) throws IllegalArgumentException {
-    if (limit <= 0)
+    if (limit <= 0) {
       throw new IllegalArgumentException("Limit must be greater than 0");
+    }
 
     maxSpeed = limit;
   }
