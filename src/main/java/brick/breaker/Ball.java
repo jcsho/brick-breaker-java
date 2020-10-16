@@ -9,9 +9,8 @@ public class Ball extends Shape<Ball> {
    * Default constructor to create a {@link Ball} object.
    */
   public Ball() {
+    super();
     subclass = this;
-    this.size = new PVector();
-    this.position = new PVector();
     this.speed = new PVector();
   }
 

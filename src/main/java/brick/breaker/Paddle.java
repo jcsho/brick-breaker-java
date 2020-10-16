@@ -11,6 +11,7 @@ public class Paddle extends Shape<Paddle> {
    * Default constructor for {@link Paddle}.
    */
   public Paddle() {
+    super();
     subclass = this;
   }
 

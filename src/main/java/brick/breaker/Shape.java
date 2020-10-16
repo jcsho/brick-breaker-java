@@ -13,6 +13,11 @@ public abstract class Shape<T extends Shape<T>> {
   protected PVector size;
   protected PVector speed;
 
+  public Shape() {
+    position = new PVector();
+    size = new PVector();
+  }
+
   /**
    * Getter for position of {@link Shape}.
    *
