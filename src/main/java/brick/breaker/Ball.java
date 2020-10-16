@@ -1,17 +1,15 @@
 package brick.breaker;
 
 import processing.core.PApplet;
-import processing.core.PVector;
 
-public class Ball extends Shape {
+public class Ball extends Shape<Ball> {
 
   /**
    * Default constructor to create a {@link Ball} object.
    */
   public Ball() {
-    this.size = new PVector();
-    this.position = new PVector();
-    this.speed = new PVector();
+    super();
+    subclass = this;
   }
 
   /**
