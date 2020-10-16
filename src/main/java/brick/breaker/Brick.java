@@ -32,8 +32,8 @@ public class Brick extends Shape<Brick> implements IHealth {
 
   @Override
   public void damage(int amount) {
-    amount = Math.abs(amount);
-    health -= amount;
+    int damageToHealth = Math.abs(amount);
+    health -= damageToHealth;
     if (health < 0) {
       health = 0;
     }
