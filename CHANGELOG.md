@@ -1,5 +1,12 @@
 # Brick Breaker Changelog
 
+# [1.4.0](https://github.com/justinhodev/brick-breaker/compare/v1.3.0...v1.4.0) (2020-10-16)
+
+
+### Features
+
+* **brick:** add brick entity ([#6](https://github.com/justinhodev/brick-breaker/issues/6)) ([f39c978](https://github.com/justinhodev/brick-breaker/commit/f39c978387c6360893f916e51287b7cc279814dc))
+
 # [1.3.0](https://github.com/justinhodev/brick-breaker/compare/v1.2.0...v1.3.0) (2020-10-16)
 
 
