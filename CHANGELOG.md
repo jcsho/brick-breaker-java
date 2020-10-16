@@ -1,5 +1,12 @@
 # Brick Breaker Changelog
 
+# [1.3.0](https://github.com/justinhodev/brick-breaker/compare/v1.2.0...v1.3.0) (2020-10-16)
+
+
+### Features
+
+* add paddle ([#5](https://github.com/justinhodev/brick-breaker/issues/5)) ([99ee5e5](https://github.com/justinhodev/brick-breaker/commit/99ee5e5826060e25e72a3b5682a220dd99346195))
+
 # [1.2.0](https://github.com/justinhodev/brick-breaker/compare/v1.1.0...v1.2.0) (2020-10-15)
 
 
