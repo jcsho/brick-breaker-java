@@ -11,7 +11,6 @@ public abstract class Shape<T extends Shape<T>> {
   protected T subclass;
   protected PVector position;
   protected PVector size;
-  protected PVector speed;
 
   public Shape() {
     position = new PVector();
@@ -37,22 +36,13 @@ public abstract class Shape<T extends Shape<T>> {
   }
 
   /**
-   * Getter for speed of {@link Shape}.
-   *
-   * @return {@link PVector} 2D
-   */
-  public PVector getSpeed() {
-    return this.speed;
-  }
-
-  /**
    * Setter for coordinates of {@link Shape}.
    *
    * @param newPosition {@link PVector} for x and y cartesian coordinates
    * @return this instance of {@link Shape}
    */
   public T setPosition(PVector newPosition) {
-    subclass.position = newPosition;
+    subclass.position = newPosition.copy();
     return subclass;
   }
 
@@ -63,18 +53,7 @@ public abstract class Shape<T extends Shape<T>> {
    * @return this instance of {@link Shape}
    */
   public T setSize(PVector newSize) {
-    subclass.size = newSize;
-    return subclass;
-  }
-
-  /**
-   * Setter for speed of {@link Shape}.
-   *
-   * @param newSpeed {@link PVector} for speed in x and y axis
-   * @return this instance of {@link Shape}
-   */
-  public T setSpeed(PVector newSpeed) {
-    subclass.speed = newSpeed;
+    subclass.size = newSize.copy();
     return subclass;
   }
 

@@ -1,7 +1,6 @@
 package brick.breaker;
 
 import processing.core.PApplet;
-import processing.core.PVector;
 
 public class Ball extends Shape<Ball> {
 
@@ -11,7 +10,6 @@ public class Ball extends Shape<Ball> {
   public Ball() {
     super();
     subclass = this;
-    this.speed = new PVector();
   }
 
   /**

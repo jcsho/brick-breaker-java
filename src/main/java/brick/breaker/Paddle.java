@@ -3,9 +3,11 @@ package brick.breaker;
 import processing.core.PApplet;
 import processing.core.PVector;
 
-public class Paddle extends Shape<Paddle> {
+public class Paddle extends Shape<Paddle> implements IMovement {
 
-  private float smoothAmount;
+  private PVector velocity;
+  private PVector acceleration;
+  private float maxSpeed;
 
   /**
    * Default constructor for {@link Paddle}.
@@ -13,29 +15,26 @@ public class Paddle extends Shape<Paddle> {
   public Paddle() {
     super();
     subclass = this;
+    velocity = new PVector(0, 0);
+    acceleration = new PVector();
   }
 
-  /**
-   * Set the amount of pixel smoothing for {@link Paddle} movement.
-   *
-   * @param amount value to slow down by
-   * @throws IllegalArgumentException value must be a float between 0 and 1
-   */
-  public void setMovementSmoothing(float amount) throws IllegalArgumentException {
-    if (amount < 0 || amount > 1) {
-      throw new IllegalArgumentException("Amount must be between 0 and 1");
-    }
+  @Override
+  public void setMaxSpeed(float limit) throws IllegalArgumentException {
+    if (limit <= 0)
+      throw new IllegalArgumentException("Limit must be greater than 0");
 
-    this.smoothAmount = amount;
+    maxSpeed = limit;
   }
 
-  /**
-   * Move {@link Paddle} to new position in x-axis.
-   *
-   * @param position on the (inverted) cartesian coordinate system for {@link PApplet}
-   */
-  public void move(float position) {
-    this.position.lerp(new PVector(position, 0), smoothAmount);
+  @Override
+  public void update(PVector location) {
+    acceleration = PVector.sub(location, this.position);
+    acceleration.setMag(0.2f);
+
+    velocity.add(acceleration);
+    velocity.limit(maxSpeed);
+    this.position.add(velocity);
   }
 
   @Override
