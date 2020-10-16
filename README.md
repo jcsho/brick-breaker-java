@@ -11,6 +11,8 @@ Brick Breaker Clone build with Java and Processing Graphics Library
 
 ## Getting Started
 
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/justinhodev/brick-breaker)
+
 Download binary from [releases](https://github.com/justinhodev/brick-breaker/releases)
 
 ## Building from source
