@@ -5,6 +5,7 @@
 package brick.breaker;
 
 import processing.core.PApplet;
+import processing.core.PVector;
 
 /**
  * Brick Breaker Clone.
@@ -15,6 +16,9 @@ public class App extends PApplet {
   private static final int WIDTH = 1200;
   private static final int HEIGHT = 1000;
 
+  private static Paddle paddle;
+  private static PVector mouse;
+
   /**
    * Pre-run configuration for {@link PApplet}.
    * All code is only run once per instance of app.
@@ -24,14 +28,27 @@ public class App extends PApplet {
     size(WIDTH, HEIGHT);
   }
 
+  public void setup() {
+    rectMode(CENTER);
+    paddle = new Paddle().setSize(new PVector(100f, 15f)).setPosition(new PVector(width / 2, 5 * height / 6));
+    mouse = new PVector();
+  }
+
   /**
    * Runtime code for {@link PApplet}.
    * All code is run at 60 fps by default.
    */
   public void draw() {
-    // TODO implement draw
+    fill(125);
+    rect(width / 2, height / 2, width, height);
+    fill(255);
+    rect(width / 2, height / 2, width / 2, height);
+    float mouseHorizontal = constrain(mouseX, width / 4 + paddle.getSize().x / 2, 3 * width / 4 - paddle.getSize().x / 2);
+    mouse.set(mouseHorizontal, 0);
+    paddle.render(this);
+    paddle.update(mouse);
   }
-  
+
   /**
    *  Starts program with an instance of {@link PApplet}.
    *
