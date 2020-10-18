@@ -20,17 +20,23 @@ public class App extends PApplet {
   private static PVector mouse;
 
   /**
-   * Pre-run configuration for {@link PApplet}.
-   * All code is only run once per instance of app.
-   * Used to set window size / instantiate objects.
+   * Pre-configuration for {@link App}.
+   * Used to pass variables to {@link PApplet}
    */
   public void settings() {
     size(WIDTH, HEIGHT);
   }
 
+  /**
+   * Pre-run configuration for {@link PApplet}.
+   * All code is only run once per instance of app.
+   * Used to set window size / instantiate objects.
+   */
   public void setup() {
     rectMode(CENTER);
-    paddle = new Paddle().setSize(new PVector(100f, 15f)).setPosition(new PVector(width / 2, 5 * height / 6));
+    paddle = new Paddle()
+      .setSize(new PVector(100f, 15f))
+      .setPosition(new PVector(width / 2, 5 * height / 6));
     mouse = new PVector();
   }
 
@@ -43,7 +49,9 @@ public class App extends PApplet {
     rect(width / 2, height / 2, width, height);
     fill(255);
     rect(width / 2, height / 2, width / 2, height);
-    float mouseHorizontal = constrain(mouseX, width / 4 + paddle.getSize().x / 2, 3 * width / 4 - paddle.getSize().x / 2);
+    float mouseHorizontal = constrain(mouseX,
+        width / 4 + paddle.getSize().x / 2,
+        3 * width / 4 - paddle.getSize().x / 2);
     mouse.set(mouseHorizontal, 0);
     paddle.render(this);
     paddle.update(mouse);
