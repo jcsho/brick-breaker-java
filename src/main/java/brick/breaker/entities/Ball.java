@@ -1,9 +1,9 @@
 package brick.breaker.entities;
 
-import brick.breaker.interfaces.ICollision;
+import brick.breaker.interfaces.Collision;
 import processing.core.PApplet;
 
-public class Ball extends Shape<Ball> implements ICollision {
+public class Ball extends Shape<Ball> implements Collision {
 
   /**
    * Default constructor to create a {@link Ball} object.

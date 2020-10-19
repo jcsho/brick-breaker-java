@@ -2,7 +2,7 @@ package brick.breaker.interfaces;
 
 import brick.breaker.entities.Shape;
 
-public interface ICollision {
+public interface Collision {
 
   public <T extends Shape<T>> boolean isColliding(T object);
 

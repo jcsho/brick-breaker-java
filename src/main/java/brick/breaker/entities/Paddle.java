@@ -1,10 +1,10 @@
 package brick.breaker.entities;
 
-import brick.breaker.interfaces.IMovement;
+import brick.breaker.interfaces.Movement;
 import processing.core.PApplet;
 import processing.core.PVector;
 
-public class Paddle extends Shape<Paddle> implements IMovement {
+public class Paddle extends Shape<Paddle> implements Movement {
 
   private float maxSpeed = 0.6f;
 
