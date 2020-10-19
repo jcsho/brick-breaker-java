@@ -30,12 +30,8 @@ public class Paddle extends Shape<Paddle> implements IMovement {
 
   @Override
   public void update(PVector location) {
-    acceleration = PVector.sub(location, this.position);
-    acceleration.setMag(0.2f);
-
-    velocity.add(acceleration);
-    velocity.limit(maxSpeed);
-    this.position.add(velocity);
+    PVector newLocation = new PVector(location.x, this.position.y);
+    this.position.lerp(newLocation, 0.6f);
   }
 
   @Override
