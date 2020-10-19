@@ -3,7 +3,7 @@ package brick.breaker.entities;
 import brick.breaker.interfaces.Health;
 import processing.core.PApplet;
 
-public class Brick extends Shape<Brick> implements Health {
+public class Brick extends Box<Brick> implements Health {
 
   private int health;
 

@@ -4,7 +4,7 @@ import brick.breaker.interfaces.Movement;
 import processing.core.PApplet;
 import processing.core.PVector;
 
-public class Paddle extends Shape<Paddle> implements Movement {
+public class Paddle extends Box<Paddle> implements Movement {
 
   private float maxSpeed = 0.6f;
 
