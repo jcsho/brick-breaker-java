@@ -4,6 +4,8 @@
 
 package brick.breaker;
 
+import brick.breaker.entities.Ball;
+import brick.breaker.entities.Paddle;
 import processing.core.PApplet;
 import processing.core.PVector;
 

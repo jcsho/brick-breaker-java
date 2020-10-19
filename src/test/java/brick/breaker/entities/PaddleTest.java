@@ -1,5 +1,4 @@
-
-package brick.breaker;
+package brick.breaker.entities;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertThrows;

@@ -1,4 +1,4 @@
-package brick.breaker;
+package brick.breaker.entities;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
