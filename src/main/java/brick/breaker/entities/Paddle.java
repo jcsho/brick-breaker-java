@@ -1,6 +1,6 @@
 package brick.breaker.entities;
 
-import brick.breaker.IMovement;
+import brick.breaker.interfaces.IMovement;
 import processing.core.PApplet;
 import processing.core.PVector;
 

@@ -1,4 +1,4 @@
-package brick.breaker;
+package brick.breaker.interfaces;
 
 public interface IHealth {
 

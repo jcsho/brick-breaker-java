@@ -1,6 +1,6 @@
 package brick.breaker.entities;
 
-import brick.breaker.ICollision;
+import brick.breaker.interfaces.ICollision;
 import processing.core.PApplet;
 
 public class Ball extends Shape<Ball> implements ICollision {

@@ -1,6 +1,6 @@
 package brick.breaker.entities;
 
-import brick.breaker.IHealth;
+import brick.breaker.interfaces.IHealth;
 import processing.core.PApplet;
 
 public class Brick extends Shape<Brick> implements IHealth {
