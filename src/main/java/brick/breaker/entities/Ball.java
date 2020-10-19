@@ -2,8 +2,11 @@ package brick.breaker.entities;
 
 import brick.breaker.interfaces.Collision;
 import processing.core.PApplet;
+import processing.core.PVector;
 
 public class Ball extends Shape<Ball> implements Collision {
+
+  private float radius;
 
   /**
    * Default constructor to create a {@link Ball} object.
@@ -11,6 +14,17 @@ public class Ball extends Shape<Ball> implements Collision {
   public Ball() {
     super();
     subclass = this;
+  }
+
+  @Override
+  public Ball setSize(PVector newSize) throws IllegalArgumentException {
+    if (newSize.x != newSize.y) {
+      throw new IllegalArgumentException("Ball must have equal width and height");
+    }
+
+    super.setSize(newSize);
+    this.radius = newSize.x / 2;
+    return this;
   }
 
   /**
@@ -23,36 +37,30 @@ public class Ball extends Shape<Ball> implements Collision {
   }
 
   @Override
-  public <T extends Shape<T>> boolean isColliding(T object) {
-    float objectLeftEdge = object.getPosition().x - (object.getSize().x / 2);
-    float objectRightEdge = object.getPosition().x + (object.getSize().x / 2);
-    float objectTopEdge = object.getPosition().y - (object.getSize().y / 2);
-    float objectBotEdge = object.getPosition().y + (object.getSize().y / 2);
+  public <T extends Box<T>> boolean isColliding(T object) {
+    PVector closestEdge = new PVector();
+    closestEdge = this.position.copy();
 
-    float testX = this.position.x;
-    float testY = this.position.y;
-
-    if (this.position.x < objectLeftEdge) {
-      testX = objectLeftEdge;
-    } else if (this.position.x > objectRightEdge) {
-      testX = objectRightEdge;
+    if (this.position.x < object.getMin().x) {
+      closestEdge.x = object.getMin().x;
+    } else if (this.position.x > object.getMax().x) {
+      closestEdge.x = object.getMax().x;
     }
 
-    if (this.position.y < objectTopEdge) {
-      testY = objectTopEdge;
-    } else if (this.position.y > objectBotEdge) {
-      testY = objectBotEdge;
+    if (this.position.y < object.getMin().y) {
+      closestEdge.y = object.getMin().y;
+    } else if (this.position.y > object.getMax().y) {
+      closestEdge.y = object.getMax().y;
     }
 
-    float deltaX = this.position.x - testX;
-    float deltaY = this.position.y - testY;
-    float distance = (float) Math.sqrt((deltaX * deltaX) + (deltaY * deltaY));
+    PVector delta = PVector.sub(this.position, closestEdge);
+    float distance = (float) Math.sqrt((delta.x * delta.x) + (delta.y * delta.y));
 
-    return distance <= this.size.x / 2;
+    return distance <= this.radius;
   }
 
   @Override
-  public <T extends Shape<T>> void onCollision(T object) {
+  public <T extends Box<T>> void onCollision(T object) {
     // TODO Auto-generated method stub
 
   }

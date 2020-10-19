@@ -9,7 +9,13 @@ public abstract class Box<T extends Shape<T>> extends Shape<T> implements Boundi
 
   public Box() {
     super();
+  }
+
+  @Override
+  public T setSize(PVector newSize) {
+    super.setSize(newSize);
     this.halfSize = new PVector(this.size.x / 2, this.size.y / 2);
+    return subclass;
   }
 
   @Override
