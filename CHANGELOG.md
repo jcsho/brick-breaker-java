@@ -1,5 +1,12 @@
 # Brick Breaker Changelog
 
+# [1.5.0](https://github.com/justinhodev/brick-breaker/compare/v1.4.0...v1.5.0) (2020-10-19)
+
+
+### Features
+
+* add narrow phase collision ([#8](https://github.com/justinhodev/brick-breaker/issues/8)) ([9256660](https://github.com/justinhodev/brick-breaker/commit/9256660897977d6446b002f3a8e267f173807fe8))
+
 # [1.4.0](https://github.com/justinhodev/brick-breaker/compare/v1.3.0...v1.4.0) (2020-10-16)
 
 
