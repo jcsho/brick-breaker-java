@@ -16,6 +16,7 @@ public class App extends PApplet {
   private static final int WIDTH = 1200;
   private static final int HEIGHT = 1000;
 
+  private static Ball ball;
   private static Paddle paddle;
   private static PVector mouse;
 
@@ -34,6 +35,9 @@ public class App extends PApplet {
    */
   public void setup() {
     rectMode(CENTER);
+    ball = new Ball()
+      .setSize(new PVector(50, 50))
+      .setPosition(new PVector(width / 2, 5 * height / 6));
     paddle = new Paddle()
       .setSize(new PVector(100f, 15f))
       .setPosition(new PVector(width / 2, 5 * height / 6));
@@ -55,6 +59,12 @@ public class App extends PApplet {
     mouse.set(mouseHorizontal, 0);
     paddle.render(this);
     paddle.update(mouse);
+    if (ball.isColliding(paddle)) {
+      fill(255, 0, 0);
+    } else {
+      fill(255);
+    }
+    ball.render(this);
   }
 
   /**
