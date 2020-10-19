@@ -1,8 +1,6 @@
 package brick.breaker;
 
-import java.lang.Math;
 import processing.core.PApplet;
-import processing.core.PVector;
 
 public class Ball extends Shape<Ball> implements ICollision {
 
