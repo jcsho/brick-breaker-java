@@ -44,7 +44,7 @@ jobs:
           java-package: jdk
           architecture: x64
       - name: Install FOSSA CLI
-        run: "curl -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/fossa/fossa-cli/master/install.sh | bash"
+        run: "curl -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/fossas/fossa-cli/master/install.sh | bash"
       - name: Run Analysis and Upload to FOSSA
         run: fossa
       - name: Run Local FOSSA Test
