@@ -2,9 +2,11 @@ name: Pull Request
 on: pull_request
 
 jobs:
-  test:
-    name: Test
+  test_and_coverage:
+    name: JUnit Tests and Upload Jacoco Coverage
     runs-on: ubuntu-latest
+    env:
+      FOSSA_API_KEY: ${{ secrets.FOSSA_API_KEY }}
     steps:
       - name: Checkout Project
         uses: actions/checkout@v2.3.3
@@ -20,6 +22,10 @@ jobs:
           path: ~/.gradle/caches
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
           restore-keys: ${{ runner.os }}-gradle
+      - name: Install FOSSA CLI
+        run: "curl -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/fossas/fossa-cli/master/install.sh | bash"
+      - name: Run Analysis and Upload to FOSSA
+        run: fossa
       - name: Check and Test
         uses: eskatos/gradle-command-action@v1.3.3
         with:
@@ -29,4 +35,5 @@ jobs:
         with:
           project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
           coverage-reports: build/reports/jacoco/test/jacocoTestReport.xml
-
+      - name: Run Local FOSSA Test
+        run: fossa test --timeout 600

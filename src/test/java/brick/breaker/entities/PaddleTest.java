@@ -1,8 +1,6 @@
-
-package brick.breaker;
+package brick.breaker.entities;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
 
 import org.hamcrest.core.IsEqual;
@@ -30,11 +28,9 @@ public class PaddleTest {
   public void testSetSpeedThrowsError() {
     float incorrectArgument = -5;
 
-    Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
+    assertThrows(IllegalArgumentException.class, () -> {
       Paddle paddle = new Paddle();
       paddle.setMaxSpeed(incorrectArgument);
     });
-
-    assertEquals("Limit must be greater than 0", exception.getMessage());
   }
 }

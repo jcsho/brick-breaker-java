@@ -1,8 +1,8 @@
-package brick.breaker;
+package brick.breaker.interfaces;
 
 import processing.core.PVector;
 
-public interface IMovement {
+public interface Movement {
 
   /**
    * Limits maximum movement speed.

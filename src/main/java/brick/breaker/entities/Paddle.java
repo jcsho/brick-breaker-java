@@ -1,13 +1,12 @@
-package brick.breaker;
+package brick.breaker.entities;
 
+import brick.breaker.interfaces.Movement;
 import processing.core.PApplet;
 import processing.core.PVector;
 
-public class Paddle extends Shape<Paddle> implements IMovement {
+public class Paddle extends Box<Paddle> implements Movement {
 
-  private PVector velocity;
-  private PVector acceleration;
-  private float maxSpeed;
+  private float maxSpeed = 0.6f;
 
   /**
    * Default constructor for {@link Paddle}.
@@ -15,23 +14,21 @@ public class Paddle extends Shape<Paddle> implements IMovement {
   public Paddle() {
     super();
     subclass = this;
-    velocity = new PVector(0, 0);
-    acceleration = new PVector();
   }
 
   @Override
   public void setMaxSpeed(float limit) throws IllegalArgumentException {
-    if (limit <= 0) {
-      throw new IllegalArgumentException("Limit must be greater than 0");
+    if (limit <= 0 || limit > 100) {
+      throw new IllegalArgumentException("Limit must be between 1 and 100");
     }
 
-    maxSpeed = limit;
+    maxSpeed = limit / 100;
   }
 
   @Override
   public void update(PVector location) {
     PVector newLocation = new PVector(location.x, this.position.y);
-    this.position.lerp(newLocation, 0.6f);
+    this.position.lerp(newLocation, maxSpeed);
   }
 
   @Override

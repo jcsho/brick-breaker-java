@@ -5,7 +5,7 @@
 [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/070089e3cf8d44faa44ae609b87bae2f)](https://www.codacy.com/gh/justinhodev/brick-breaker/dashboard?utm_source=github.com&utm_medium=referral&utm_content=justinhodev/brick-breaker&utm_campaign=Badge_Coverage)
 ![Release](https://github.com/justinhodev/brick-breaker/workflows/Release/badge.svg)
 ![GitHub](https://img.shields.io/github/license/justinhodev/brick-breaker)
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fjustinhodev%2Fbrick-breaker.svg?type=small)](https://app.fossa.com/projects/git%2Bgithub.com%2Fjustinhodev%2Fbrick-breaker?ref=badge_small)
+[![FOSSA Status](https://app.fossa.com/api/projects/custom%2B20524%2Fgithub.com%2Fjustinhodev%2Fbrick-breaker.svg?type=small)](https://app.fossa.com/projects/custom%2B20524%2Fgithub.com%2Fjustinhodev%2Fbrick-breaker?ref=badge_small)
 
 Brick Breaker Clone build with Java and Processing Graphics Library
 
@@ -40,4 +40,4 @@ $ ./gradlew check build
 
 ## License
 
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fjustinhodev%2Fbrick-breaker.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fjustinhodev%2Fbrick-breaker?ref=badge_large)
+[![FOSSA Status](https://app.fossa.com/api/projects/custom%2B20524%2Fgithub.com%2Fjustinhodev%2Fbrick-breaker.svg?type=large)](https://app.fossa.com/projects/custom%2B20524%2Fgithub.com%2Fjustinhodev%2Fbrick-breaker?ref=badge_large)

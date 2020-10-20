@@ -1,4 +1,4 @@
-package brick.breaker;
+package brick.breaker.entities;
 
 import processing.core.PApplet;
 import processing.core.PVector;
