@@ -2,8 +2,8 @@ name: Pull Request
 on: pull_request
 
 jobs:
-  test:
-    name: Test
+  test_and_coverage:
+    name: JUnit Tests and Upload Jacoco Coverage
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Project
@@ -29,4 +29,23 @@ jobs:
         with:
           project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
           coverage-reports: build/reports/jacoco/test/jacocoTestReport.xml
-
+  fossa_scan:
+    name: FOSSA Scan
+    runs-on: ubuntu-latest
+    env:
+      FOSSA_API_KEY: ${{ secrets.FOSSA_API_KEY }}
+    steps:
+      - name: Checkout Project
+        uses: actions/checkout@v2.3.3
+      - name: Setup Java 11
+        uses: actions/setup-java@v1.4.3
+        with:
+          java-version: '11'
+          java-package: jdk
+          architecture: x64
+      - name: Install FOSSA CLI
+        runs: curl -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/fossa/fossa-cli/master/install.sh | bash
+      - name: Run Analysis and Upload to FOSSA
+        run: fossa
+      - name: Run Local FOSSA Test
+        run: fossa test --timeout 600
