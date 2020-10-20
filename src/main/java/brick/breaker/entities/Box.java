@@ -7,10 +7,9 @@ public abstract class Box<T extends Shape<T>> extends Shape<T> implements Boundi
 
   protected PVector halfSize;
 
-  public Box() {
-    super();
-  }
-
+  /**
+   * Adds new halfSize vector for calculating aabb corners.
+   */
   @Override
   public T setSize(PVector newSize) {
     super.setSize(newSize);
