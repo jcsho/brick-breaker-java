@@ -5,6 +5,8 @@ jobs:
   test_and_coverage:
     name: JUnit Tests and Upload Jacoco Coverage
     runs-on: ubuntu-latest
+    env:
+      FOSSA_API_KEY: ${{ secrets.FOSSA_API_KEY }}
     steps:
       - name: Checkout Project
         uses: actions/checkout@v2.3.3
