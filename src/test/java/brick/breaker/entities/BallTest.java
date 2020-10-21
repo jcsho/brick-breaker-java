@@ -1,9 +1,13 @@
 package brick.breaker.entities;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import org.hamcrest.core.IsEqual;
+import org.hamcrest.core.IsNot;
 import org.junit.Test;
+
 import processing.core.PVector;
 
 public class BallTest {
@@ -40,5 +44,13 @@ public class BallTest {
     assertTrue(isCollidingWithBrick);
   }
 
+  @Test
+  public void testBallMovement() {
+    PVector newPosition = new PVector(0, 0);
+    float speed = 60;
+    ball.setMaxSpeed(speed);
+    ball.update(newPosition);
+    assertThat(ball.getPosition().array(), IsNot.not(IsEqual.equalTo(newPosition.array())));
+  }
 }
 
