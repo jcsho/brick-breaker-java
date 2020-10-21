@@ -4,8 +4,7 @@
 
 package brick.breaker;
 
-import brick.breaker.entities.Ball;
-import brick.breaker.entities.Paddle;
+import brick.breaker.managers.GameManager;
 import processing.core.PApplet;
 import processing.core.PVector;
 
@@ -17,10 +16,10 @@ public class App extends PApplet {
 
   private static final int WIDTH = 1200;
   private static final int HEIGHT = 1000;
+  private static final int GAMEWIDTH = 600;
+  private static final int GAMEHEIGHT = 1000;
 
-  private static Ball ball;
-  private static Paddle paddle;
-  private static PVector mouse;
+  private static GameManager gameManager;
 
   /**
    * Pre-configuration for {@link App}.
@@ -37,13 +36,10 @@ public class App extends PApplet {
    */
   public void setup() {
     rectMode(CENTER);
-    ball = new Ball()
-      .setSize(new PVector(50, 50))
-      .setPosition(new PVector(width / 2, 5 * height / 6));
-    paddle = new Paddle()
-      .setSize(new PVector(100f, 15f))
-      .setPosition(new PVector(width / 2, 5 * height / 6));
-    mouse = new PVector();
+    gameManager = new GameManager();
+    PVector gameWindowMin = new PVector(WIDTH / 2 - GAMEWIDTH / 2, HEIGHT / 2 - GAMEHEIGHT / 2);
+    PVector gameWindowMax = new PVector(WIDTH / 2 + GAMEWIDTH / 2, HEIGHT / 2 + GAMEHEIGHT / 2);
+    gameManager.setup(this, gameWindowMin, gameWindowMax);
   }
 
   /**
@@ -54,19 +50,10 @@ public class App extends PApplet {
     fill(125);
     rect(width / 2, height / 2, width, height);
     fill(255);
-    rect(width / 2, height / 2, width / 2, height);
-    float mouseHorizontal = constrain(mouseX,
-        width / 4 + paddle.getSize().x / 2,
-        3 * width / 4 - paddle.getSize().x / 2);
-    mouse.set(mouseHorizontal, 0);
-    paddle.render(this);
-    paddle.update(mouse);
-    if (ball.isColliding(paddle)) {
-      fill(255, 0, 0);
-    } else {
-      fill(255);
-    }
-    ball.render(this);
+    rect(width / 2, height / 2, GAMEWIDTH, GAMEHEIGHT);
+
+    gameManager.update(this);
+    gameManager.render(this);
   }
 
   /**
