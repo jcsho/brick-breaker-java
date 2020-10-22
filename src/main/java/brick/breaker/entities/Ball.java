@@ -1,11 +1,13 @@
 package brick.breaker.entities;
 
 import brick.breaker.interfaces.Collision;
+import brick.breaker.interfaces.Movement;
 import processing.core.PApplet;
 import processing.core.PVector;
 
-public class Ball extends Shape<Ball> implements Collision {
+public class Ball extends Shape<Ball> implements Collision, Movement {
 
+  private float maxSpeed;
   private float radius;
 
   /**
@@ -63,5 +65,19 @@ public class Ball extends Shape<Ball> implements Collision {
   public <T extends Box<T>> void onCollision(T object) {
     // TODO Auto-generated method stub
 
+  }
+
+  @Override
+  public void setMaxSpeed(float limit) throws IllegalArgumentException {
+    if (limit <= 0 || limit > 100) {
+      throw new IllegalArgumentException("Limit must be between 0 and 100");
+    }
+
+    this.maxSpeed = limit / 100;
+  }
+
+  @Override
+  public void update(PVector location) {
+    this.position.lerp(location, maxSpeed);
   }
 }
