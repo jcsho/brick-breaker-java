@@ -1,5 +1,12 @@
 # Brick Breaker Changelog
 
+# [1.6.0](https://github.com/justinhodev/brick-breaker/compare/v1.5.0...v1.6.0) (2020-10-22)
+
+
+### Features
+
+* add game manager ([#15](https://github.com/justinhodev/brick-breaker/issues/15)) ([a795944](https://github.com/justinhodev/brick-breaker/commit/a795944587b054fb1b39e624734c8a68cd7405a5))
+
 # [1.5.0](https://github.com/justinhodev/brick-breaker/compare/v1.4.0...v1.5.0) (2020-10-19)
 
 
