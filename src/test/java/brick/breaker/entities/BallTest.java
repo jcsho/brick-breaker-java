@@ -7,7 +7,6 @@ import static org.junit.Assert.assertTrue;
 import org.hamcrest.core.IsEqual;
 import org.hamcrest.core.IsNot;
 import org.junit.Test;
-
 import processing.core.PVector;
 
 public class BallTest {
