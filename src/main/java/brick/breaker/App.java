@@ -15,9 +15,9 @@ import processing.core.PVector;
 public class App extends PApplet {
 
   private static final int WIDTH = 1200;
-  private static final int HEIGHT = 1000;
-  private static final int GAMEWIDTH = 600;
-  private static final int GAMEHEIGHT = 1000;
+  private static final int HEIGHT = 600;
+  private static final int GAMEWIDTH = WIDTH / 2;
+  private static final int GAMEHEIGHT = HEIGHT;
 
   private static GameManager gameManager;
 
@@ -48,9 +48,9 @@ public class App extends PApplet {
    */
   public void draw() {
     fill(125);
-    rect(width / 2, height / 2, width, height);
+    rect(WIDTH / 2, HEIGHT / 2, WIDTH, HEIGHT);
     fill(255);
-    rect(width / 2, height / 2, GAMEWIDTH, GAMEHEIGHT);
+    rect(WIDTH / 2, HEIGHT / 2, GAMEWIDTH, GAMEHEIGHT);
 
     gameManager.update(this);
     gameManager.render(this);

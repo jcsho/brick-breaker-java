@@ -7,8 +7,9 @@ import processing.core.PVector;
 
 public class Ball extends Shape<Ball> implements Collision, Movement {
 
-  private float maxSpeed;
+  private float maxSpeed = 0.6f;
   private float radius;
+  private PVector direction;
 
   /**
    * Default constructor to create a {@link Ball} object.
@@ -77,7 +78,13 @@ public class Ball extends Shape<Ball> implements Collision, Movement {
   }
 
   @Override
-  public void update(PVector location) {
-    this.position.lerp(location, maxSpeed);
+  public void setTargetPosition(PVector position) {
+    this.direction = PVector.sub(position, this.position);
+    this.direction.normalize();
+  }
+
+  @Override
+  public void update() {
+    this.position.add(this.direction);
   }
 }

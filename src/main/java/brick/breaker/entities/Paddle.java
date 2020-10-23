@@ -7,6 +7,7 @@ import processing.core.PVector;
 public class Paddle extends Box<Paddle> implements Movement {
 
   private float maxSpeed = 0.6f;
+  private PVector targetPosition;
 
   /**
    * Default constructor for {@link Paddle}.
@@ -14,6 +15,19 @@ public class Paddle extends Box<Paddle> implements Movement {
   public Paddle() {
     super();
     subclass = this;
+  }
+
+  /**
+   * Add default target position.
+   *
+   * @param newPosition {@link PVector} for x and y cartesian coordinates
+   * @return this {@link Paddle} instance
+   */
+  @Override
+  public Paddle setPosition(PVector newPosition) {
+    super.setPosition(newPosition);
+    this.targetPosition = new PVector(0f, newPosition.y);
+    return this;
   }
 
   @Override
@@ -26,9 +40,15 @@ public class Paddle extends Box<Paddle> implements Movement {
   }
 
   @Override
-  public void update(PVector location) {
-    PVector newLocation = new PVector(location.x, this.position.y);
-    this.position.lerp(newLocation, maxSpeed);
+  public void setTargetPosition(PVector position) {
+    this.targetPosition.set(position.x, this.position.y);
+  }
+
+  @Override
+  public void update() {
+    if (this.targetPosition.x != this.position.x) {
+      this.position.lerp(this.targetPosition, maxSpeed);
+    }
   }
 
   @Override

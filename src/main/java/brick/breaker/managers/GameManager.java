@@ -12,11 +12,7 @@ public class GameManager {
 
   private static Ball ball;
   private static Paddle paddle;
-  private static PVector initialBallPosition;
-  private static PVector initialPaddlePosition;
-  private static PVector ballSize;
   private static PVector input;
-  private static PVector paddleSize;
   private static PVector gameSizeMin;
   private static PVector gameSizeMax;
 
@@ -35,13 +31,15 @@ public class GameManager {
 
     input = new PVector(0, 0);
 
-    initialBallPosition = new PVector(sketch.width / 2, sketch.height / 2);
-    initialPaddlePosition = new PVector(sketch.width / 2, 5 * sketch.height / 6);
+    PVector initialBallPosition = new PVector(sketch.width / 2, sketch.height / 2);
+    PVector initialBallTarget = new PVector(sketch.width / 2, sketch.height);
+    PVector initialPaddlePosition = new PVector(sketch.width / 2, 5 * sketch.height / 6);
 
-    ballSize = new PVector(BALL_RADIUS, BALL_RADIUS);
-    paddleSize = new PVector(PADDLE_WIDTH, PADDLE_HEIGHT);
+    PVector ballSize = new PVector(BALL_RADIUS, BALL_RADIUS);
+    PVector paddleSize = new PVector(PADDLE_WIDTH, PADDLE_HEIGHT);
 
     ball = new Ball().setPosition(initialBallPosition).setSize(ballSize);
+    ball.setTargetPosition(initialBallTarget);
     paddle = new Paddle().setPosition(initialPaddlePosition).setSize(paddleSize);
   }
 
@@ -64,20 +62,20 @@ public class GameManager {
    * @param sketch processing instance
    */
   public void update(PApplet sketch) {
-    System.out.println(input.x);
-    System.out.println(paddle.getMin().x);
-    input.x = PApplet.constrain(
-        sketch.mouseX,
-        gameSizeMin.x + paddle.getSize().x / 2,
-        gameSizeMax.x - paddle.getSize().x / 2
-        );
-    paddle.update(input);
-
     if (ball.isColliding(paddle)) {
       sketch.fill(255, 0, 0);
     } else {
       sketch.fill(255);
     }
+
+    input.x = PApplet.constrain(
+        sketch.mouseX,
+        gameSizeMin.x + paddle.getSize().x / 2,
+        gameSizeMax.x - paddle.getSize().x / 2
+        );
+    paddle.setTargetPosition(input);
+    paddle.update();
+    ball.update();
   }
 
 }
