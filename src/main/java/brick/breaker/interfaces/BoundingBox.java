@@ -9,13 +9,13 @@ public interface BoundingBox {
    *
    * @return {@link PVector} (x, y) coordinate
    */
-  public PVector getMin();
+  PVector getMin();
 
   /**
    * Get 2d cartesian coordinate furthest from origin.
    *
    * @return {@link PVector} (x, y) coordinate
    */
-  public PVector getMax();
+  PVector getMax();
 
 }
