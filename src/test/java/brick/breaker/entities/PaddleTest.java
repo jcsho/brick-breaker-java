@@ -19,7 +19,8 @@ public class PaddleTest {
     Paddle paddle = new Paddle();
     paddle.setPosition(initialPosition);
     paddle.setMaxSpeed(maxSpeed);
-    paddle.update(newPosition);
+    paddle.setTargetPosition(newPosition);
+    paddle.update();
 
     assertThat(paddle.getPosition().array(), IsNot.not(IsEqual.equalTo(initialPosition.array())));
   }

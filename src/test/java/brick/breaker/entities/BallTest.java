@@ -48,7 +48,8 @@ public class BallTest {
     PVector newPosition = new PVector(0, 0);
     float speed = 60;
     ball.setMaxSpeed(speed);
-    ball.update(newPosition);
+    ball.setTargetPosition(newPosition);
+    ball.update();
     assertThat(ball.getPosition().array(), IsNot.not(IsEqual.equalTo(newPosition.array())));
   }
 }
