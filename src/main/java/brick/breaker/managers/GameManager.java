@@ -13,8 +13,6 @@ public class GameManager {
   private static Ball ball;
   private static Paddle paddle;
   private static PVector input;
-  private static PVector gameSizeMin;
-  private static PVector gameSizeMax;
 
   private static final int BALL_RADIUS = 50;
   private static final int PADDLE_WIDTH = 100;
@@ -26,8 +24,6 @@ public class GameManager {
    * @param sketch processing instance
    */
   public void setup(PApplet sketch, PVector minSize, PVector maxSize) {
-    gameSizeMin = minSize;
-    gameSizeMax = maxSize;
 
     input = new PVector(0, 0);
 
@@ -41,7 +37,7 @@ public class GameManager {
     ball = new Ball().setPosition(initialBallPosition).setSize(ballSize);
     ball.setTargetPosition(initialBallTarget);
     paddle = new Paddle().setPosition(initialPaddlePosition).setSize(paddleSize);
-    paddle.setMovementBoundary(gameSizeMin, gameSizeMax);
+    paddle.setMovementBoundary(minSize, maxSize);
   }
 
   /**
