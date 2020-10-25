@@ -8,6 +8,8 @@ public class Paddle extends Box<Paddle> implements Movement {
 
   private float maxSpeed = 0.6f;
   private PVector targetPosition;
+  private PVector gameSizeMin;
+  private PVector gameSizeMax;
 
   /**
    * Default constructor for {@link Paddle}.
@@ -40,15 +42,25 @@ public class Paddle extends Box<Paddle> implements Movement {
   }
 
   @Override
+  public void setMovementBoundary(PVector minBoundary, PVector maxBoundary) {
+    this.gameSizeMin = minBoundary;
+    this.gameSizeMax = maxBoundary;
+  }
+
+  @Override
   public void setTargetPosition(PVector position) {
-    this.targetPosition.set(position.x, this.position.y);
+    float positionX = position.x;
+    if (positionX < this.gameSizeMin.x + this.halfSize.x) {
+      positionX = this.gameSizeMin.x + this.halfSize.x;
+    } else if (positionX > this.gameSizeMax.x - this.halfSize.x) {
+      positionX = this.gameSizeMax.x - this.halfSize.x;
+    }
+    this.targetPosition.set(positionX, this.position.y);
   }
 
   @Override
   public void update() {
-    if (this.targetPosition.x != this.position.x) {
-      this.position.lerp(this.targetPosition, maxSpeed);
-    }
+    this.position.lerp(this.targetPosition, maxSpeed);
   }
 
   @Override

@@ -78,6 +78,11 @@ public class Ball extends Shape<Ball> implements Collision, Movement {
   }
 
   @Override
+  public void setMovementBoundary(PVector minBoundary, PVector maxBoundary) {
+
+  }
+
+  @Override
   public void setTargetPosition(PVector position) {
     this.direction = PVector.sub(position, this.position);
     this.direction.normalize();

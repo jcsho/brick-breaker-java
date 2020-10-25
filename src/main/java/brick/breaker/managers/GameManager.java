@@ -41,6 +41,7 @@ public class GameManager {
     ball = new Ball().setPosition(initialBallPosition).setSize(ballSize);
     ball.setTargetPosition(initialBallTarget);
     paddle = new Paddle().setPosition(initialPaddlePosition).setSize(paddleSize);
+    paddle.setMovementBoundary(gameSizeMin, gameSizeMax);
   }
 
   /**
@@ -68,11 +69,8 @@ public class GameManager {
       sketch.fill(255);
     }
 
-    input.x = PApplet.constrain(
-        sketch.mouseX,
-        gameSizeMin.x + paddle.getSize().x / 2,
-        gameSizeMax.x - paddle.getSize().x / 2
-        );
+    input.set(sketch.mouseX, sketch.mouseY);
+
     paddle.setTargetPosition(input);
     paddle.update();
     ball.update();
