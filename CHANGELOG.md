@@ -1,5 +1,12 @@
 # Brick Breaker Changelog
 
+# [1.7.0](https://github.com/justinhodev/brick-breaker/compare/v1.6.0...v1.7.0) (2020-10-25)
+
+
+### Features
+
+* add boundaries for movement ([#16](https://github.com/justinhodev/brick-breaker/issues/16)) ([3aec0af](https://github.com/justinhodev/brick-breaker/commit/3aec0af23f049d03da6102ef38745eab307f50df))
+
 # [1.6.0](https://github.com/justinhodev/brick-breaker/compare/v1.5.0...v1.6.0) (2020-10-22)
 
 
