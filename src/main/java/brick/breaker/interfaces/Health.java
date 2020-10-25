@@ -2,10 +2,10 @@ package brick.breaker.interfaces;
 
 public interface Health {
 
-  public int getHealth();
+  int getHealth();
 
-  public void setMaxHealth(int amount) throws IllegalArgumentException;
+  void setMaxHealth(int amount) throws IllegalArgumentException;
 
-  public void damage(int amount);
+  void damage(int amount);
 
 }

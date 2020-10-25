@@ -7,16 +7,29 @@ public interface Movement {
   /**
    * Limits maximum movement speed.
    *
-   * @param limit magnitiude of speed vector
-   * @throws IllegalArgumentException limit must be greater than 0
+   * @param limit magnitude between 0 and 100
+   * @throws IllegalArgumentException limit is outside of accepted bounds (0 - 100)
    */
   void setMaxSpeed(float limit) throws IllegalArgumentException;
 
   /**
-   * Movement for object.
+   * Restrict movement to a bounding box.
    *
-   * @param location new place to move towards
+   * @param minBoundary box origin coordinate
+   * @param maxBoundary box corner coordinate
    */
-  void update(PVector location);
+  void setMovementBoundary(PVector minBoundary, PVector maxBoundary);
+
+  /**
+   * Abstract setter for object movement target.
+   *
+   * @param position the target object should move towards
+   */
+  void setTargetPosition(PVector position);
+
+  /**
+   * Physics movement update.
+   */
+  void update();
 
 }
