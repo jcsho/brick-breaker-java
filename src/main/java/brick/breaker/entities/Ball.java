@@ -10,6 +10,8 @@ public class Ball extends Shape<Ball> implements Collision, Movement {
   private float maxSpeed = 0.6f;
   private float radius;
   private PVector direction;
+  private PVector minGameSize;
+  private PVector maxGameSize;
 
   /**
    * Default constructor to create a {@link Ball} object.
@@ -79,17 +81,29 @@ public class Ball extends Shape<Ball> implements Collision, Movement {
 
   @Override
   public void setMovementBoundary(PVector minBoundary, PVector maxBoundary) {
-
+    this.minGameSize = minBoundary;
+    this.maxGameSize = maxBoundary;
   }
 
   @Override
   public void setTargetPosition(PVector position) {
     this.direction = PVector.sub(position, this.position);
     this.direction.normalize();
+    this.direction.mult(1f + this.maxSpeed);
   }
 
   @Override
   public void update() {
+    if (this.position.x - this.radius < minGameSize.x
+      || this.position.x + this.radius > maxGameSize.x) {
+      this.direction.x *= -1;
+    }
+
+    if (this.position.y - this.radius < minGameSize.y
+      || this.position.y + this.radius > maxGameSize.y) {
+      this.direction.y *= -1;
+    }
+
     this.position.add(this.direction);
   }
 }

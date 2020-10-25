@@ -36,6 +36,7 @@ public class GameManager {
 
     ball = new Ball().setPosition(initialBallPosition).setSize(ballSize);
     ball.setTargetPosition(initialBallTarget);
+    ball.setMovementBoundary(minSize, maxSize);
     paddle = new Paddle().setPosition(initialPaddlePosition).setSize(paddleSize);
     paddle.setMovementBoundary(minSize, maxSize);
   }
