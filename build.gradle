@@ -33,7 +33,11 @@ dependencies {
     implementation 'org.processing:core:3.3.7'
 
     // Use JUnit test framework
-    testImplementation 'junit:junit:4.13.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+
+    // Use Hamcrest matchers
+    testImplementation 'org.hamcrest:hamcrest:2.2'
 }
 
 application {
@@ -42,6 +46,7 @@ application {
 }
 
 test {
+  useJUnitPlatform()
   finalizedBy jacocoTestReport
 }
 
