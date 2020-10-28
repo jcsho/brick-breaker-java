@@ -1,12 +1,12 @@
 package brick.breaker.entities;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.not;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.hamcrest.core.IsEqual;
-import org.hamcrest.core.IsNot;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import processing.core.PVector;
 
 public class BallTest {
@@ -55,7 +55,7 @@ public class BallTest {
     ball.setMaxSpeed(speed);
     ball.setTargetPosition(newPosition);
     ball.update();
-    assertThat(ball.getPosition().array(), IsNot.not(IsEqual.equalTo(newPosition.array())));
+    assertThat(ball.getPosition().array(), not(is(newPosition.array())));
   }
 
   @Test
@@ -66,14 +66,14 @@ public class BallTest {
     for (int i = 0; i < 5; i++) {
       ball.update();
     }
-    assertTrue("Ball X position should be greater than min bounds x",
-        ball.getPosition().x > minBoundary.x);
-    assertTrue("Ball X position should be less than max bounds x",
-        ball.getPosition().x < maxBoundary.x);
-    assertTrue("Ball Y position should be greater than min bounds y",
-        ball.getPosition().x > minBoundary.y);
-    assertTrue("Ball Y position should be less than max bounds y",
-        ball.getPosition().x < maxBoundary.y);
+    assertTrue(ball.getPosition().x > minBoundary.x,
+        "Ball X position should be greater than min bounds x");
+    assertTrue(ball.getPosition().x < maxBoundary.x,
+        "Ball X position should be less than max bounds x");
+    assertTrue(ball.getPosition().x > minBoundary.y,
+        "Ball Y position should be greater than min bounds y");
+    assertTrue(ball.getPosition().x < maxBoundary.y,
+        "Ball Y position should be less than max bounds y");
   }
 }
 
