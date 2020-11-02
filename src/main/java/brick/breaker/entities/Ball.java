@@ -95,12 +95,12 @@ public class Ball extends Shape<Ball> implements Collision, Movement {
   @Override
   public void update() {
     if (this.position.x - this.radius < minGameSize.x
-      || this.position.x + this.radius > maxGameSize.x) {
+        || this.position.x + this.radius > maxGameSize.x) {
       this.direction.x *= -1;
     }
 
     if (this.position.y - this.radius < minGameSize.y
-      || this.position.y + this.radius > maxGameSize.y) {
+        || this.position.y + this.radius > maxGameSize.y) {
       this.direction.y *= -1;
     }
 
