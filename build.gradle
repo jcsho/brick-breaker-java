@@ -13,6 +13,9 @@ plugins {
     // Apply the application plugin to add support for building a CLI application.
     id 'application'
 
+    // Apply the lombok plugin to simplify boilerplate
+    id 'io.freefair.lombok' version '5.3.0'
+
     // Code static analysis tools
     id 'checkstyle'
     id 'jacoco'
