@@ -29,14 +29,13 @@ public class GameManager {
 
     PVector initialBallPosition = new PVector(sketch.width / 2, sketch.height / 2);
     PVector initialBallTarget = new PVector(sketch.width / 2, sketch.height);
-    PVector initialPaddlePosition = new PVector(sketch.width / 2, 5 * sketch.height / 6);
-
     PVector ballSize = new PVector(BALL_RADIUS, BALL_RADIUS);
-    PVector paddleSize = new PVector(PADDLE_WIDTH, PADDLE_HEIGHT);
-
     ball = new Ball().setPosition(initialBallPosition).setSize(ballSize);
     ball.setTargetPosition(initialBallTarget);
     ball.setMovementBoundary(minSize, maxSize);
+
+    PVector initialPaddlePosition = new PVector(sketch.width / 2, 5 * sketch.height / 6);
+    PVector paddleSize = new PVector(PADDLE_WIDTH, PADDLE_HEIGHT);
     paddle = new Paddle().setPosition(initialPaddlePosition).setSize(paddleSize);
     paddle.setMovementBoundary(minSize, maxSize);
   }

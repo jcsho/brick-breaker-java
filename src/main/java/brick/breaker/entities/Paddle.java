@@ -49,13 +49,13 @@ public class Paddle extends Box<Paddle> implements Movement {
 
   @Override
   public void setTargetPosition(PVector position) {
-    float xPosition = position.x;
-    if (xPosition < this.minGameSize.x + this.halfSize.x) {
-      xPosition = this.minGameSize.x + this.halfSize.x;
-    } else if (xPosition > this.maxGameSize.x - this.halfSize.x) {
-      xPosition = this.maxGameSize.x - this.halfSize.x;
+    float newPositionX = position.x;
+    if (newPositionX < this.minGameSize.x + this.halfSize.x) {
+      newPositionX = this.minGameSize.x + this.halfSize.x;
+    } else if (newPositionX > this.maxGameSize.x - this.halfSize.x) {
+      newPositionX = this.maxGameSize.x - this.halfSize.x;
     }
-    this.targetPosition.set(xPosition, this.position.y);
+    this.targetPosition.set(newPositionX, this.position.y);
   }
 
   @Override

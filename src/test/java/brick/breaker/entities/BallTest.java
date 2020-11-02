@@ -18,6 +18,9 @@ public class BallTest {
   private PVector minBoundary;
   private PVector maxBoundary;
 
+  /**
+   * Initialize testable objects.
+   */
   @BeforeEach
   public void initialize() {
     ballPosition = new PVector(26, 26);
