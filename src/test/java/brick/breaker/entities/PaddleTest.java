@@ -1,54 +1,58 @@
 package brick.breaker.entities;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.not;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import org.hamcrest.core.IsEqual;
-import org.hamcrest.core.IsNot;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import processing.core.PVector;
 
 public class PaddleTest {
-  private static final PVector initialPosition = new PVector(50, 450);
-  private static final PVector minBoundary = new PVector(0, 0);
-  private static final PVector maxBoundary = new PVector(500, 500);
-  private static final PVector paddleSize = new PVector(100, 50);
+  private Paddle paddle;
+  private PVector initialPosition;
+  private PVector newPosition;
 
-  @Test
-  public void testPaddleMovement() {
-    PVector newPosition = new PVector(600, 0);
-    float maxSpeed = 5;
-
-    Paddle paddle = new Paddle();
+  /**
+   * Initialize required properties of {@link Paddle}.
+   */
+  @BeforeEach
+  public void initialize() {
+    paddle = new Paddle();
+    initialPosition = new PVector(50, 450);
+    PVector minBoundary = new PVector(0, 0);
+    PVector maxBoundary = new PVector(500, 500);
+    PVector paddleSize = new PVector(100, 50);
+    newPosition = new PVector(600, 0);
     paddle.setMovementBoundary(minBoundary, maxBoundary);
     paddle.setSize(paddleSize);
     paddle.setPosition(initialPosition);
-    paddle.setMaxSpeed(maxSpeed);
     paddle.setTargetPosition(newPosition);
+  }
+
+  @Test
+  public void testPaddleMovement() {
+    float maxSpeed = 5;
+
+    paddle.setMaxSpeed(maxSpeed);
     paddle.update();
 
-    assertThat(paddle.getPosition().array(), IsNot.not(IsEqual.equalTo(initialPosition.array())));
+    assertThat(paddle.getPosition().array(), is(not(initialPosition.array())));
   }
 
   @Test
   public void testSetSpeedThrowsError() {
     float incorrectArgument = -5;
 
-    assertThrows(IllegalArgumentException.class, () -> {
-      Paddle paddle = new Paddle();
-      paddle.setMaxSpeed(incorrectArgument);
-    });
+    assertThrows(IllegalArgumentException.class, () -> paddle.setMaxSpeed(incorrectArgument));
   }
 
   @Test
   public void testSetTargetPositionOutOfBounds() {
-    PVector newPosition = new PVector(-50, initialPosition.y);
-    Paddle paddle = new Paddle();
-    paddle.setMovementBoundary(minBoundary, maxBoundary);
-    paddle.setPosition(initialPosition);
-    paddle.setSize(paddleSize);
+    newPosition.set(-50, initialPosition.y);
     paddle.setTargetPosition(newPosition);
     paddle.update();
-    assertThat(paddle.getPosition().array(), IsEqual.equalTo(initialPosition.array()));
+    assertThat(paddle.getPosition().array(), is(initialPosition.array()));
   }
 }
