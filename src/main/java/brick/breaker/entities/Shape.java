@@ -1,62 +1,79 @@
 package brick.breaker.entities;
 
-import processing.core.PApplet;
-import processing.core.PVector;
+import brick.breaker.interfaces.Collision;
+import brick.breaker.interfaces.Movement;
+import brick.breaker.interfaces.Renderer;
+import brick.breaker.interfaces.Vector;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 /**
  * The base class for all shapes in the game.
  */
-public abstract class Shape<T extends Shape<T>> {
+@ToString
+public class Shape {
+  @Setter
+  private Collision<Shape> collision;
+  @Setter
+  private Movement movement;
+  @Setter
+  private Renderer renderer;
+  @Getter
+  @Setter
+  private Vector position;
+  @Getter
+  @Setter
+  private Vector size;
+  private final Vector minEdge;
+  private final Vector maxEdge;
 
-  protected T subclass;
-  protected PVector position;
-  protected PVector size;
-
-  public Shape() {
-    position = new PVector();
-    size = new PVector();
+  /**
+   * Default all args constructor for shape.
+   *
+   * @param collision hit detection logic component
+   * @param movement  physics movement logic component
+   * @param renderer  graphics rendering logic component
+   * @param position  state for 2d coordinate
+   * @param size      state for length and width of shape
+   */
+  @Builder
+  public Shape(Collision<Shape> collision, Movement movement, Renderer renderer, Vector position,
+               Vector size) {
+    this.collision = collision;
+    this.movement = movement;
+    this.renderer = renderer;
+    this.position = position;
+    this.size = size;
+    this.minEdge = this.position.copy();
+    this.maxEdge = this.position.copy();
   }
 
   /**
-   * Getter for position of {@link Shape}.
-   *
-   * @return {@link PVector} 2D
+   * Draw object to screen.
    */
-  public PVector getPosition() {
-    return this.position;
+  public void render() {
+    this.renderer.render(this.position, this.size);
   }
 
   /**
-   * Getter for size of {@link Shape}.
+   * Get minimum bounds (axis-aligned bounding box) of shape.
    *
-   * @return {@link PVector} 2D
+   * @return coordinate of minimum edge
    */
-  public PVector getSize() {
-    return this.size;
+  public Vector getMinEdge() {
+    minEdge.set(position.getX() - size.getX(), position.getY() - size.getY());
+    return minEdge;
   }
 
   /**
-   * Setter for coordinates of {@link Shape}.
+   * Get maximum bounds (axis-aligned bounding box) of shape.
    *
-   * @param newPosition {@link PVector} for x and y cartesian coordinates
-   * @return this instance of {@link Shape}
+   * @return coordinate of maximum edge
    */
-  public T setPosition(PVector newPosition) {
-    subclass.position = newPosition.copy();
-    return subclass;
+  public Vector getMaxEdge() {
+    maxEdge.set(position.getX() + size.getX(), position.getY() + size.getY());
+    return maxEdge;
   }
-
-  /**
-   * Setter for size of {@link Shape}.
-   *
-   * @param newSize {@link PVector} for shape
-   * @return this instance of {@link Shape}
-   */
-  public T setSize(PVector newSize) {
-    subclass.size = newSize.copy();
-    return subclass;
-  }
-
-  public abstract void render(PApplet sketch);
-
 }
