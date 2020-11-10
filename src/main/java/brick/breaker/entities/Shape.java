@@ -76,4 +76,27 @@ public class Shape {
     maxEdge.set(position.getX() + size.getX(), position.getY() + size.getY());
     return maxEdge;
   }
+
+  /**
+   * Collision detection between 2 shapes.
+   * Delegated to {@link Collision#isColliding(Object, Object)}.
+   *
+   * @param other shape to detect
+   * @return true if shapes are is overlapping
+   */
+  public boolean isColliding(Shape other) {
+    return collision.isColliding(this, other);
+  }
+
+  /**
+   * Check direction of collision.
+   * Delegated to {@link Collision#collisionDirection(Object, Object)}.
+   * @TODO combine this with isCollding.
+   *
+   * @param other shape to detect
+   * @return {@link Vector} direction of the other shape
+   */
+  public Vector collisionDirection(Shape other) {
+    return collision.collisionDirection(this, other);
+  }
 }

@@ -20,6 +20,14 @@ public interface Vector {
   float getY();
 
   /**
+   * Clone the x and y component of vector other.
+   *
+   * @param other vector to copy
+   * @return vector after components are changed
+   */
+  Vector set(Vector other);
+
+  /**
    * Set the x and y component of the vector.
    *
    * @param x the horizontal component of the vector

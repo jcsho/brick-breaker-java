@@ -31,6 +31,12 @@ public class PVector implements Vector {
   }
 
   @Override
+  public Vector set(Vector other) {
+    this.vector.set(other.getX(), other.getY());
+    return this;
+  }
+
+  @Override
   public Vector copy() {
     Vector copy = new PVector();
     copy.set(this.getX(), this.getY());
