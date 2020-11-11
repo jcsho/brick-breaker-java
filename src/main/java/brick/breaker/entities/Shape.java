@@ -58,6 +58,24 @@ public class Shape {
   }
 
   /**
+   * Physics update for movement.
+   * Delegated to {@link Movement#update(Vector)}.
+   */
+  public void update() {
+    this.movement.update(this.position);
+  }
+
+  /**
+   * Assign target {@link Vector} for movement.
+   * Delegated to {@link Movement#setTargetPosition(Vector, Vector)}.
+   *
+   * @param target position to move to
+   */
+  public void setTargetPosition(Vector target) {
+    movement.setTargetPosition(this.position, target);
+  }
+
+  /**
    * Get minimum bounds (axis-aligned bounding box) of shape.
    *
    * @return coordinate of minimum edge
@@ -91,6 +109,7 @@ public class Shape {
   /**
    * Check direction of collision.
    * Delegated to {@link Collision#collisionDirection(Object, Object)}.
+   *
    * @TODO combine this with isCollding.
    *
    * @param other shape to detect
