@@ -23,14 +23,14 @@ public class PVectorTest {
   private Vector v2;
 
   @BeforeEach
-  void setup() {
+  protected void setup() {
     v1 = new PVector();
     v2 = new PVector();
     assertThat(v1, is(instanceOf(Vector.class)));
     assertThat(v2, is(instanceOf(Vector.class)));
   }
 
-  static Stream<Arguments> provideValuesForVectorOperations() {
+  protected static Stream<Arguments> provideValuesForVectorOperations() {
     return Stream.of(
       Arguments.of(1f, 1f, 2f, 2f, 0.3f),
       Arguments.of(5000f, 4000f, 22f, 500f, 0.5f),
@@ -41,7 +41,7 @@ public class PVectorTest {
   @DisplayName("Test Vector Addition")
   @ParameterizedTest(name = "Vector({0}, {1}) + Vector({2}, {3})")
   @MethodSource("provideValuesForVectorOperations")
-  void testVectorAddition(ArgumentsAccessor arguments) {
+  protected void testVectorAddition(ArgumentsAccessor arguments) {
     this.v1.set(arguments.getFloat(0), arguments.getFloat(1));
     this.v2.set(arguments.getFloat(2), arguments.getFloat(3));
     v1.add(v2);
@@ -60,7 +60,7 @@ public class PVectorTest {
   @DisplayName("Test Vector Subtraction")
   @ParameterizedTest(name = "Vector({0}, {1}) - Vector({2}, {3})")
   @MethodSource("provideValuesForVectorOperations")
-  void testVectorSubtraction(ArgumentsAccessor arguments) {
+  protected void testVectorSubtraction(ArgumentsAccessor arguments) {
     this.v1.set(arguments.getFloat(0), arguments.getFloat(1));
     this.v2.set(arguments.getFloat(2), arguments.getFloat(3));
     v1.sub(v2);
@@ -79,7 +79,7 @@ public class PVectorTest {
   @DisplayName("Test Vector Multiplication")
   @ParameterizedTest(name = "Vector({0}, {1}) * {2}")
   @MethodSource("provideValuesForVectorOperations")
-  void testVectorMultiplication(ArgumentsAccessor arguments) {
+  protected void testVectorMultiplication(ArgumentsAccessor arguments) {
     this.v1.set(arguments.getFloat(0), arguments.getFloat(1));
     v1.multiply(arguments.getFloat(2));
 
@@ -97,7 +97,7 @@ public class PVectorTest {
   @DisplayName("Test Vector Magnitude")
   @ParameterizedTest(name = "Vector({0}, {1}).mag()")
   @MethodSource("provideValuesForVectorOperations")
-  void testVectorMagnitude(ArgumentsAccessor arguments) {
+  protected void testVectorMagnitude(ArgumentsAccessor arguments) {
     this.v1.set(arguments.getFloat(0), arguments.getFloat(1));
     float result = this.v1.mag();
 
@@ -113,7 +113,7 @@ public class PVectorTest {
   @DisplayName("Test Vector Squared Magnitude")
   @ParameterizedTest(name = "Vector({0}, {1}).magSq()")
   @MethodSource("provideValuesForVectorOperations")
-  void testVectorSquaredMagnitude(ArgumentsAccessor arguments) {
+  protected void testVectorSquaredMagnitude(ArgumentsAccessor arguments) {
     this.v1.set(arguments.getFloat(0), arguments.getFloat(1));
     float result = this.v1.magSq();
 
@@ -127,7 +127,7 @@ public class PVectorTest {
   @DisplayName("Test Vector Normalize")
   @ParameterizedTest(name = "Vector({0}, {1}).normalize()")
   @MethodSource("provideValuesForVectorOperations")
-  void testVectorNormalize(ArgumentsAccessor arguments) {
+  protected void testVectorNormalize(ArgumentsAccessor arguments) {
     this.v1.set(arguments.getFloat(0), arguments.getFloat(1));
     this.v1.normalize();
 
@@ -145,7 +145,7 @@ public class PVectorTest {
   @DisplayName("Test Vector Linear Interpolation")
   @ParameterizedTest(name = "Vector({0}, {1}).lerp(Vector({2}, {3}), {4})")
   @MethodSource("provideValuesForVectorOperations")
-  void testVectorLinearInterpolation(ArgumentsAccessor arguments) {
+  protected void testVectorLinearInterpolation(ArgumentsAccessor arguments) {
     this.v1.set(arguments.getFloat(0), arguments.getFloat(1));
     this.v2.set(arguments.getFloat(2), arguments.getFloat(3));
     this.v1.lerp(v2, arguments.getFloat(4));
