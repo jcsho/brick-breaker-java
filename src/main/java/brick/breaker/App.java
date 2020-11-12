@@ -4,9 +4,10 @@
 
 package brick.breaker;
 
+import brick.breaker.components.vectors.PVector;
+import brick.breaker.interfaces.Vector;
 import brick.breaker.managers.GameManager;
 import processing.core.PApplet;
-import processing.core.PVector;
 
 /**
  * Brick Breaker Clone.
@@ -19,7 +20,7 @@ public class App extends PApplet {
   private static final int GAMEWIDTH = WIDTH / 2;
   private static final int GAMEHEIGHT = HEIGHT;
 
-  private static GameManager gameManager;
+  private GameManager gameManager;
 
   /**
    * Pre-configuration for {@link App}.
@@ -36,10 +37,13 @@ public class App extends PApplet {
    */
   public void setup() {
     rectMode(CENTER);
-    gameManager = new GameManager();
-    PVector gameWindowMin = new PVector(WIDTH / 2 - GAMEWIDTH / 2, HEIGHT / 2 - GAMEHEIGHT / 2);
-    PVector gameWindowMax = new PVector(WIDTH / 2 + GAMEWIDTH / 2, HEIGHT / 2 + GAMEHEIGHT / 2);
-    gameManager.setup(this, gameWindowMin, gameWindowMax);
+    gameManager = GameManager.getInstance();
+    Vector gameWindowMin = new PVector()
+        .set(WIDTH / 2 - GAMEWIDTH / 2, HEIGHT / 2 - GAMEHEIGHT / 2);
+    Vector gameWindowMax = new PVector()
+        .set(WIDTH / 2 + GAMEWIDTH / 2, HEIGHT / 2 + GAMEHEIGHT / 2);
+    gameManager.setSize(gameWindowMin, gameWindowMax);
+    gameManager.setup(this);
   }
 
   /**
@@ -47,11 +51,6 @@ public class App extends PApplet {
    * All code is run at 60 fps by default.
    */
   public void draw() {
-    fill(125);
-    rect(WIDTH / 2, HEIGHT / 2, WIDTH, HEIGHT);
-    fill(255);
-    rect(WIDTH / 2, HEIGHT / 2, GAMEWIDTH, GAMEHEIGHT);
-
     gameManager.update(this);
     gameManager.render(this);
   }
