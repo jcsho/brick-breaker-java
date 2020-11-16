@@ -30,6 +30,13 @@ public class PVectorTest {
     assertThat(v2, is(instanceOf(Vector.class)));
   }
 
+  /**
+   * Create test data for common vector operations.
+   * Order of arguments = v1.x, v1.y, v2.x, v2.y,
+   * linear interpolation amount (float between 0 and 1)
+   *
+   * @return arguments for parameterized tests
+   */
   protected static Stream<Arguments> provideValuesForVectorOperations() {
     return Stream.of(
       Arguments.of(1f, 1f, 2f, 2f, 0.3f),
