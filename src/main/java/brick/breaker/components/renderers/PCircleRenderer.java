@@ -10,7 +10,7 @@ import processing.core.PApplet;
  */
 public class PCircleRenderer implements Renderer {
 
-  private static PApplet renderer;
+  private final PApplet renderer;
 
   public PCircleRenderer(@NonNull PApplet app) {
     renderer = app;
@@ -18,6 +18,6 @@ public class PCircleRenderer implements Renderer {
 
   @Override
   public void render(Vector position, Vector size) {
-    PCircleRenderer.renderer.ellipse(position.getX(), position.getY(), size.getX(), size.getY());
+    renderer.ellipse(position.getX(), position.getY(), size.getX(), size.getY());
   }
 }

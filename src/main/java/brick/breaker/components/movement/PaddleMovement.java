@@ -15,7 +15,7 @@ public class PaddleMovement implements Movement {
 
   @Override
   public void changeDirection(boolean flipHorizontal, boolean flipVertical) {
-
+    // Does nothing
   }
 
   @Override

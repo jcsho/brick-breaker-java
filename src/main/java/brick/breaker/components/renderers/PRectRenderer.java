@@ -10,7 +10,7 @@ import processing.core.PApplet;
  */
 public class PRectRenderer implements Renderer {
 
-  private static PApplet renderer;
+  private final PApplet renderer;
 
   public PRectRenderer(@NonNull PApplet app) {
     renderer = app;
