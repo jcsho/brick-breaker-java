@@ -11,8 +11,6 @@ Brick Breaker Clone build with Java and Processing Graphics Library
 
 ## Getting Started
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/justinhodev/brick-breaker)
-
 Download binary from [releases](https://github.com/justinhodev/brick-breaker/releases)
 
 ## Building from source
@@ -21,7 +19,7 @@ Download binary from [releases](https://github.com/justinhodev/brick-breaker/rel
   * Java OpenJDK 8+ (built with 11)
   * Gradle v6.6.3+
   * (Optional) NodeJS v12+ (for husky and commitizen)
-  
+
 2. Clone and Build
 
 ```bash
