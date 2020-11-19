@@ -1,0 +1,24 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+
+# User specific files
+/**/tasks.xml
+/**/usage.statistics.xml
+/**/dictionaries
+/**/shelf
+
+# Generated files
+contentModel.xml
+
+# High churn files
+uiDesigner.xml
+
+# Gradle
+gradle.xml
+libraries
+artifacts
+compiler.xml
+jarRepositories.xml
+/modules/
+
