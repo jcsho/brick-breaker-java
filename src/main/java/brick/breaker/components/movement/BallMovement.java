@@ -43,7 +43,6 @@ public class BallMovement implements Movement {
 
   @Override
   public void update(@NonNull Vector position) {
-    // TODO: add boundary detection and bounce on contact
     position.add(this.velocity);
   }
 }
