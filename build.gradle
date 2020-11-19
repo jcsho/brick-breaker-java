@@ -41,6 +41,9 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.7.0'
 
+    // Use Mockito mocks and stubs
+    testImplementation 'org.mockito:mockito-core:2.+'
+
     // Use Hamcrest matchers
     testImplementation 'org.hamcrest:hamcrest:2.2'
 }
