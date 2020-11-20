@@ -1,5 +1,6 @@
 package brick.breaker.unit;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.anyFloat;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
@@ -15,6 +16,7 @@ import org.junit.jupiter.api.Test;
 
 public class PaddleMovementTest {
 
+  private float moveSpeed;
   private Vector velocity;
   private Movement movement;
 
@@ -29,6 +31,22 @@ public class PaddleMovementTest {
   protected void testMovementNoInteraction() {
     verifyNoMoreInteractions(velocity);
     movement.changeDirection(true, true);
+  }
+
+  @DisplayName("Test Paddle Movement Set Target Changes Velocity")
+  @Test
+  protected void testMovementSetTarget() {
+    Vector position = mock(Vector.class);
+    Vector target = mock(Vector.class);
+    movement.setTargetPosition(position, target);
+    verify(velocity).set(target.getX(), position.getY());
+  }
+
+  @DisplayName("Test Paddle Movement Throws Error On Out of Bounds Move Speed")
+  @Test
+  protected void testMovementThrowsError() {
+    moveSpeed = -1;
+    assertThrows(IllegalArgumentException.class, () -> movement.setMoveSpeed(moveSpeed));
   }
 
   @DisplayName("Test Paddle Movement Update Changes Position")
