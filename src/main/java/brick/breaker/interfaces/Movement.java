@@ -1,35 +1,34 @@
 package brick.breaker.interfaces;
 
-import processing.core.PVector;
-
 public interface Movement {
 
   /**
-   * Limits maximum movement speed.
+   * Change velocity vector in horizontal or vertical axis.
+   * If value is true, velocity vector will reverse in parameter axis.
+   *
+   * @param flipHorizontal invert horizontal velocity
+   * @param flipVertical invert vertical velocity
+   */
+  void changeDirection(boolean flipHorizontal, boolean flipVertical);
+
+  /**
+   * Change movement speed.
    *
    * @param limit magnitude between 0 and 100
    * @throws IllegalArgumentException limit is outside of accepted bounds (0 - 100)
    */
-  void setMaxSpeed(float limit) throws IllegalArgumentException;
-
-  /**
-   * Restrict movement to a bounding box.
-   *
-   * @param minBoundary box origin coordinate
-   * @param maxBoundary box corner coordinate
-   */
-  void setMovementBoundary(PVector minBoundary, PVector maxBoundary);
+  void setMoveSpeed(float limit) throws IllegalArgumentException;
 
   /**
    * Abstract setter for object movement target.
    *
    * @param position the target object should move towards
    */
-  void setTargetPosition(PVector position);
+  void setTargetPosition(Vector position, Vector target);
 
   /**
    * Physics movement update.
    */
-  void update();
+  void update(Vector position);
 
 }

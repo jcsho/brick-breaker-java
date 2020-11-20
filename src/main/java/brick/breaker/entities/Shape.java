@@ -1,62 +1,121 @@
 package brick.breaker.entities;
 
-import processing.core.PApplet;
-import processing.core.PVector;
+import brick.breaker.interfaces.Collision;
+import brick.breaker.interfaces.Movement;
+import brick.breaker.interfaces.Renderer;
+import brick.breaker.interfaces.Vector;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 /**
  * The base class for all shapes in the game.
  */
-public abstract class Shape<T extends Shape<T>> {
+@ToString
+public class Shape {
+  @Setter
+  private Collision<Shape> collision;
+  @Setter
+  private Movement movement;
+  @Setter
+  private Renderer renderer;
+  @Getter
+  @Setter
+  private Vector position;
+  @Getter
+  @Setter
+  private Vector size;
+  private final Vector minEdge;
+  private final Vector maxEdge;
 
-  protected T subclass;
-  protected PVector position;
-  protected PVector size;
-
-  public Shape() {
-    position = new PVector();
-    size = new PVector();
+  /**
+   * Default all args constructor for shape.
+   *
+   * @param collision hit detection logic component
+   * @param movement  physics movement logic component
+   * @param renderer  graphics rendering logic component
+   * @param position  state for 2d coordinate
+   * @param size      state for length and width of shape
+   */
+  @Builder
+  public Shape(Collision<Shape> collision, Movement movement, Renderer renderer, Vector position,
+               Vector size) {
+    this.collision = collision;
+    this.movement = movement;
+    this.renderer = renderer;
+    this.position = position;
+    this.size = size;
+    this.minEdge = this.position.copy();
+    this.maxEdge = this.position.copy();
   }
 
   /**
-   * Getter for position of {@link Shape}.
-   *
-   * @return {@link PVector} 2D
+   * Draw object to screen.
    */
-  public PVector getPosition() {
-    return this.position;
+  public void render() {
+    this.renderer.render(this.position, this.size);
   }
 
   /**
-   * Getter for size of {@link Shape}.
-   *
-   * @return {@link PVector} 2D
+   * Physics update for movement.
+   * Delegated to {@link Movement#update(Vector)}.
    */
-  public PVector getSize() {
-    return this.size;
+  public void update() {
+    this.movement.update(this.position);
   }
 
   /**
-   * Setter for coordinates of {@link Shape}.
+   * Assign target {@link Vector} for movement.
+   * Delegated to {@link Movement#setTargetPosition(Vector, Vector)}.
    *
-   * @param newPosition {@link PVector} for x and y cartesian coordinates
-   * @return this instance of {@link Shape}
+   * @param target position to move to
    */
-  public T setPosition(PVector newPosition) {
-    subclass.position = newPosition.copy();
-    return subclass;
+  public void setTargetPosition(Vector target) {
+    movement.setTargetPosition(this.position, target);
   }
 
   /**
-   * Setter for size of {@link Shape}.
+   * Get minimum bounds (axis-aligned bounding box) of shape.
    *
-   * @param newSize {@link PVector} for shape
-   * @return this instance of {@link Shape}
+   * @return coordinate of minimum edge
    */
-  public T setSize(PVector newSize) {
-    subclass.size = newSize.copy();
-    return subclass;
+  public Vector getMinEdge() {
+    minEdge.set(position.getX() - size.getX(), position.getY() - size.getY());
+    return minEdge;
   }
 
-  public abstract void render(PApplet sketch);
+  /**
+   * Get maximum bounds (axis-aligned bounding box) of shape.
+   *
+   * @return coordinate of maximum edge
+   */
+  public Vector getMaxEdge() {
+    maxEdge.set(position.getX() + size.getX(), position.getY() + size.getY());
+    return maxEdge;
+  }
 
+  /**
+   * Collision detection between 2 shapes.
+   * Delegated to {@link Collision#isColliding(Object, Object)}.
+   *
+   * @param other shape to detect
+   * @return true if shapes are is overlapping
+   */
+  public boolean isColliding(Shape other) {
+    return collision.isColliding(this, other);
+  }
+
+  /**
+   * Check direction of collision.
+   * Delegated to {@link Collision#collisionDirection(Object, Object)}.
+   *
+   * @TODO combine this with isCollding.
+   *
+   * @param other shape to detect
+   * @return {@link Vector} direction of the other shape
+   */
+  public Vector collisionDirection(Shape other) {
+    return collision.collisionDirection(this, other);
+  }
 }
