@@ -1,4 +1,4 @@
-package brick.breaker.managers;
+package brick.breaker.systems.managers;
 
 import brick.breaker.components.collisions.CircleAndRect;
 import brick.breaker.components.movement.BallMovement;

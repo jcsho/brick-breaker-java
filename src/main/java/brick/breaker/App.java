@@ -6,7 +6,7 @@ package brick.breaker;
 
 import brick.breaker.components.vectors.PVector;
 import brick.breaker.interfaces.Vector;
-import brick.breaker.managers.GameManager;
+import brick.breaker.systems.managers.GameManager;
 import processing.core.PApplet;
 
 /**
