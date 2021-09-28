@@ -32,7 +32,7 @@ repositories {
 
 dependencies {
     // This dependency is used by the application.
-    implementation 'com.google.guava:guava:30.0-jre'
+    implementation 'com.google.guava:guava:31.0.1-jre'
     implementation 'org.processing:core:3.3.7'
 
     // Use JUnit test framework
